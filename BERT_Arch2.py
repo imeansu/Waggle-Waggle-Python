@@ -17,7 +17,7 @@ class BERT_Arch2(nn.Module):
         #pass the inputs to the model  
         _, cls_hs = self.bert(sent_id, attention_mask=mask)
         x = self.linear(cls_hs)
-        x = self.softmax(x)VB
+        x = self.softmax(x)
         return x
     
 class Run_BERT:
