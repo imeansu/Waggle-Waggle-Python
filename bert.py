@@ -6,8 +6,8 @@ class Bert():
 
     def __init__(self) -> None:
         self.publisher = Publisher("my_queue")
-        self.publisher.initPublish("topic", host='52.78.117.179', port=6379, db=0)
-
+        self.publisher.initPublish("topic", host='redis.slss29.ng.0001.apn2.cache.amazonaws.com', port=6379, db=0)
+#'52.78.117.179'
     def generateTopic(self, topicMessage):
         """
         추천 로직~~~
