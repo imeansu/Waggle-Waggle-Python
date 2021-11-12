@@ -4,6 +4,8 @@ import time
 from topicMessage import TopicRequestMessage, TopicResponseMessage
 from bert import Bert
 from functools import partial
+from BERT_Arch import BERT_Arch2
+from BERT_Arch import Run_BERT
 
 class Consumer:
     def __init__(self):
