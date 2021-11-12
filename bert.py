@@ -1,7 +1,8 @@
 from topicMessage import *
 from topicMessage import TopicResponseMessage
 from publisher import Publisher
-from BERT_Arch2 import *
+from BERT_Arch import BERT_Arch2
+from BERT_Arch import Run_BERT
 
 class Bert():
 
