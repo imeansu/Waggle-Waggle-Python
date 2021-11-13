@@ -46,6 +46,7 @@ class Run_BERT:
         return output.cpu().detach().numpy()[0]
 
     def google_trend(self, topic):
+        topic = topic.replace("_", " ")
         kw_list = [topic]
         pytrends = TrendReq(hl="ko", tz=540)
         pytrends.build_payload(kw_list, cat=0, timeframe='today 5-y', geo='KR', gprop='')
