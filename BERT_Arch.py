@@ -45,7 +45,7 @@ class Run_BERT:
         return output.cpu().detach().numpy()[0]
 
     def google_trend(self, topic):
-        pytrends = TrendReq(hl='KR', tz=360, timeout=(10,25), proxies=['https://3.34.3.202:80',], retries=2, backoff_factor=0.1, requests_args={'verify':False})
+        pytrends = TrendReq(hl='KR', tz=360, timeout=(10,25), proxies=['https://34.203.233.13:80',], retries=2, backoff_factor=0.1, requests_args={'verify':False})
         kw_list = [topic]
         pytrends.build_payload(kw_list, cat=0, timeframe='today 5-y', geo='KR', gprop='')
         related_topics = pytrends.related_topics()
