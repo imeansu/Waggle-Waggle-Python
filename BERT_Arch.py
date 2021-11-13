@@ -46,7 +46,7 @@ class Run_BERT:
         return output.cpu().detach().numpy()[0]
 
     def google_trend(self, topic):
-        kw_list = ["bts"]
+        kw_list = [topic]
         pytrends = TrendReq(hl="ko", tz=540)
         pytrends.build_payload(kw_list, cat=0, timeframe='today 5-y', geo='KR', gprop='')
         related_topics = pytrends.related_topics()
@@ -61,6 +61,6 @@ class Run_BERT:
         result = self.predict(text)
         result = [self.num_to_label[str(i)] for i in result.argsort()[::-1][:num_result]]
         print(f"BERT_Arch result: {result}")
-        result += self.google_trend(result[0])[4:9]
+        result.extend(list(self.google_trend(result[0])[4:9]))
         print(f"BERT + google: {result}")
         return result
