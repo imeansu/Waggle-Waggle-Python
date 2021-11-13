@@ -63,6 +63,6 @@ class Run_BERT:
         result = self.predict(text)
         result = [self.num_to_label[str(i)] for i in result.argsort()[::-1][:num_result]]
         print(f"BERT_Arch result: {result}")
-        result.extend(list(self.google_trend(result[0])[4:9]))
+        result.extend(list(self.google_trend(result[0])[:5]))
         print(f"BERT + google: {result}")
         return result
