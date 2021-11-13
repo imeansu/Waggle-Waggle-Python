@@ -4,6 +4,7 @@ from torch import nn
 from pytorch_pretrained_bert import BertModel
 from pytorch_pretrained_bert import BertTokenizer
 from keras.preprocessing.sequence import pad_sequences
+from pytrends.request import TrendReq
 
 class BERT_Arch2(nn.Module):
     def __init__(self, dropout=0.1):
@@ -42,7 +43,17 @@ class Run_BERT:
         masks = torch.tensor(self.text_masks(piped)).to(self.device)
         output = self.model(text, masks)
         return output.cpu().detach().numpy()[0]
-    
+
+    def google_trend(self, topic):
+        pytrends = TrendReq(hl='KR', tz=360, timeout=(10,25), proxies=['https://3.34.3.202:80',], retries=2, backoff_factor=0.1, requests_args={'verify':False})
+        kw_list = [topic]
+        pytrends.build_payload(kw_list, cat=0, timeframe='today 5-y', geo='KR', gprop='')
+        related_topics = pytrends.related_topics()
+        related_queries = pytrends.related_queries()
+        return related_topics + related_queries
+
     def run(self, text, num_result=5):
         result = self.predict(text)
-        return [self.num_to_label[str(i)] for i in result.argsort()[::-1][:num_result]]
+        result = [self.num_to_label[str(i)] for i in result.argsort()[::-1][:num_result]]
+        result += self.google_trend(result[0])
+        return result

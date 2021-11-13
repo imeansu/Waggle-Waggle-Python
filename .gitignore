@@ -15,3 +15,6 @@ __pycache__
 # Ignore all local history of files
 .history
 .ionide
+
+model_v1.pt
+num_to_label.json
