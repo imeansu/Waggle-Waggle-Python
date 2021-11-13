@@ -53,7 +53,7 @@ class Run_BERT:
         # print(related_topics)
         # print("-------------")
         df = pytrends.related_queries()
-        df = pd.DataFrame(df["bts"]["rising"])
+        df = pd.DataFrame(df[topic]["rising"])
         related_queries = df["query"].values
         return related_queries
 
