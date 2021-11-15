@@ -37,4 +37,9 @@ class Consumer:
         return
 
 consumer = Consumer()
-consumer.main()
+
+while 1:
+    try:
+        consumer.main()
+    except: 
+        pass
