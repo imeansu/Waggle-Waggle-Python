@@ -67,7 +67,7 @@ class Run_BERT:
         print(f"BERT_Arch result: {result}")
         try: result.extend(list(self.google_trend(result[0])[:5]))
         except Exception as e: 
-            print("Exception message: " + e)
+            print("Exception message: ", e)
             pass
         print(f"BERT + google: {result}")
         print(f"take time : {time.time() - start}")
