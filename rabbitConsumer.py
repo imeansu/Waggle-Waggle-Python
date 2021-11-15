@@ -41,5 +41,6 @@ consumer = Consumer()
 while 1:
     try:
         consumer.main()
-    except: 
+    except Exception as e: 
+        print("Exception message: " + e)
         pass

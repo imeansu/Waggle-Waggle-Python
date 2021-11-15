@@ -66,7 +66,9 @@ class Run_BERT:
         result = [self.num_to_label[str(i)] for i in result.argsort()[::-1][:num_result]]
         print(f"BERT_Arch result: {result}")
         try: result.extend(list(self.google_trend(result[0])[:5]))
-        except: pass
+        except Exception as e: 
+            print("Exception message: " + e)
+            pass
         print(f"BERT + google: {result}")
         print(f"take time : {time.time() - start}")
         return result
