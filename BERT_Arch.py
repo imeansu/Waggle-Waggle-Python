@@ -65,7 +65,8 @@ class Run_BERT:
         result = self.predict(text)
         result = [self.num_to_label[str(i)] for i in result.argsort()[::-1][:num_result]]
         print(f"BERT_Arch result: {result}")
-        result.extend(list(self.google_trend(result[0])[:5]))
+        try: result.extend(list(self.google_trend(result[0])[:5]))
+        except: pass
         print(f"BERT + google: {result}")
         print(f"take time : {time.time() - start}")
         return result
