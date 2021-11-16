@@ -75,7 +75,7 @@ class Run_BERT:
         result = self.predict(text)
         result = [self.num_to_label[str(i)] for i in result.argsort()[::-1][:num_result]]
         print(f"BERT_Arch result: {result}")
-        result = result[:2]
+        result = result[:3]
         try: 
             google_trends = list(self.google_trend(result[0]))[:1]
             print(f"google_trend : {google_trends}")
