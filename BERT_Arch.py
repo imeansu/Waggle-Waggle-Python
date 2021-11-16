@@ -79,7 +79,7 @@ class Run_BERT:
         try: 
             google_trends = list(self.google_trend(result[0]))[:1]
             print(f"google_trend : {google_trends}")
-            result = google_trends + result
+            result[0] = google_trends[0]
         except Exception as e: 
             print("Exception message: ", e)
             pass
