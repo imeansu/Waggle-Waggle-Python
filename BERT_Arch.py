@@ -49,9 +49,9 @@ class Run_BERT:
         output = output.cpu().detach().numpy()[0]
         for i in self.num_to_label:
             word = self.num_to_label[i]
-            if word in origin_text.lower() and word in tmp:
+            if word in origin_text.lower() and word in self.tmp:
                 output[int(i)] += 5
-            if word not in tmp:
+            if word not in self.tmp:
                 output[int(i)] -= 100
         output[7] -= 3
         return output
