@@ -76,7 +76,10 @@ class Run_BERT:
         result = [self.num_to_label[str(i)] for i in result.argsort()[::-1][:num_result]]
         print(f"BERT_Arch result: {result}")
         result = result[:2]
-        try: result.extend(list(self.google_trend(result[0])[:1]))
+        try: 
+            google_trends = list(self.google_trend(result[0]))
+            print(f"google_trend : {google_trends}")
+            result.extend(google_trends[:1])
         except Exception as e: 
             print("Exception message: ", e)
             pass
