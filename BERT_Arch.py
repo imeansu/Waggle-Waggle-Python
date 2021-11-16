@@ -25,7 +25,7 @@ class BERT_Arch2(nn.Module):
 
 class Run_BERT:
     def __init__(self):
-        self.tmp = ['bts', 'blackpink', 'netflix', 'korean_food', 'nct', 'kpop', 'squid_game', 'twice', 'north_korea', 'itzy']
+        self.tmp = ['bts', 'blackpink', 'netflix', 'nct', 'kpop', 'squid_game', 'twice', 'north_korea', 'itzy']
         self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
         self.device = torch.device("cpu")
         self.model = torch.load('./model_v1.pt', map_location=self.device)
