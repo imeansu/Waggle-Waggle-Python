@@ -77,7 +77,8 @@ class Run_BERT:
         print(f"BERT_Arch result: {result}")
         result = result[:2]
         try: 
-            google_trends = list(self.google_trend(result[0]))
+            query = "넷플릭스" if result[0] == "netflix" else result[0]
+            google_trends = list(self.google_trend(query))
             print(f"google_trend : {google_trends}")
             result.extend(google_trends[:1])
         except Exception as e: 
