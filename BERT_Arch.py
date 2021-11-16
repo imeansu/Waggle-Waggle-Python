@@ -77,9 +77,9 @@ class Run_BERT:
         print(f"BERT_Arch result: {result}")
         result = result[:2]
         try: 
-            google_trends = list(self.google_trend(result[0]))
+            google_trends = list(self.google_trend(result[0]))[:1]
             print(f"google_trend : {google_trends}")
-            google_trends[:1].extend(result)
+            google_trends.extend(result)
         except Exception as e: 
             print("Exception message: ", e)
             pass
