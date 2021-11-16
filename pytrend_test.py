@@ -2,7 +2,7 @@ from pytrends.request import TrendReq
 import pandas as pd
 
 # pytrends = TrendReq(hl='KR', tz=360, timeout=(10,25), proxies=['https://34.203.233.13:80',], retries=2, backoff_factor=0.1, requests_args={'verify':False})
-keyword = "squid_game"
+keyword = "bts"
 keyword = keyword.replace("_", " ")
 print(keyword)
 kw_list = [keyword]
