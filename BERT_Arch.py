@@ -22,9 +22,10 @@ class BERT_Arch2(nn.Module):
         x = self.linear(cls_hs)
         x = self.softmax(x)
         return x
-    
+
 class Run_BERT:
     def __init__(self):
+        self.tmp = ['bts', 'blackpink', 'netflix', 'korean_food', 'nct', 'kpop', 'squid_game', 'twice', 'north_korea', 'itzy']
         self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True)
         self.device = torch.device("cpu")
         self.model = torch.load('./model_v1.pt', map_location=self.device)
@@ -40,12 +41,21 @@ class Run_BERT:
         return [[float(i > 0) for i in ii] for ii in texts]
 
     def predict(self, text):
+        origin_text = text
         piped = self.text_pipeline(text)
         text = torch.tensor(piped).to(self.device)
         masks = torch.tensor(self.text_masks(piped)).to(self.device)
         output = self.model(text, masks)
-        return output.cpu().detach().numpy()[0]
-
+        output = output.cpu().detach().numpy()[0]
+        for i in self.num_to_label:
+            word = self.num_to_label[i]
+            if word in origin_text.lower() and word in tmp:
+                output[int(i)] += 5
+            if word not in tmp:
+                output[int(i)] -= 100
+        output[7] -= 3
+        return output
+    
     def google_trend(self, topic):
         topic = topic.replace("_", " ")
         print(f"topic is : {topic}")
