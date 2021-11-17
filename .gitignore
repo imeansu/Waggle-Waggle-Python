@@ -18,3 +18,4 @@ __pycache__
 
 model_v1.pt
 num_to_label.json
+naverClient.py
