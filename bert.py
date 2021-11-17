@@ -33,7 +33,7 @@ class Bert():
 
     def papago(self, text):
         base_url = "https://openapi.naver.com/v1/papago/n2mt"
-        headers = {"X-Naver-Client-id": naverClient.getClientID(), "X-Naver-Client-Secret": naverClient.getClientSecret()}
+        headers = {"X-Naver-Client-id": naverClient.ClientID, "X-Naver-Client-Secret": naverClient.ClientSecret}
         data = {'text' : text, 'source' : 'ko', 'target' : 'en'}
         response = requests.post(base_url, headers=headers, data=data)
         rescode = response.status_code
