@@ -13,7 +13,7 @@ class Bert():
         self.publisher = Publisher("my_queue")
         self.publisher.initPublish("topic", host='redis.slss29.ng.0001.apn2.cache.amazonaws.com', port=6379, db=0)
         self.runBert = Run_BERT()
-        self.naverClient = naverClient()
+        self.naverClient = naverClient.naverClient()
         
 #'52.78.117.179'
     def generateTopic(self, topicRequestMessage):
