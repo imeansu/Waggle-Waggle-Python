@@ -68,6 +68,7 @@ class Run_BERT:
         df = pytrends.related_queries()
         df = pd.DataFrame(df[topic]["rising"])
         related_queries = df["query"].values
+        print(f"google realted queries : {related_queries}")
         return related_queries
 
     def run(self, text, num_result=5):
