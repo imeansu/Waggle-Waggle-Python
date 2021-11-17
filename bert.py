@@ -4,7 +4,7 @@ from publisher import Publisher
 from BERT_Arch import BERT_Arch2
 from BERT_Arch import Run_BERT
 from langdetect import detect
-import naverClient
+from naverClient import naverClient
 import requests
 
 class Bert():
@@ -13,7 +13,7 @@ class Bert():
         self.publisher = Publisher("my_queue")
         self.publisher.initPublish("topic", host='redis.slss29.ng.0001.apn2.cache.amazonaws.com', port=6379, db=0)
         self.runBert = Run_BERT()
-        self.naverClient = naverClient.naverClient()
+        self.naverClient = naverClient()
         
 #'52.78.117.179'
     def generateTopic(self, topicRequestMessage):
